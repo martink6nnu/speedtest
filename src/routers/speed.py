@@ -6,9 +6,9 @@ router = APIRouter()
 
 
 @router.get("/speed")
-def get_speed(speed_service: SpeedService = Depends(get_speed_service)):
+async def get_speed(speed_service: SpeedService = Depends(get_speed_service)):
     try:
-        return speed_service.get_speedtest_results()
+        return await speed_service.get_speedtest_results()
     except Exception as e:
         raise HTTPException(
             status_code=500, detail=f"Failed to get speed test results: {str(e)}"

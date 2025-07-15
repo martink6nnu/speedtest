@@ -2,8 +2,7 @@
 .ruff_cache/*
 .pytest_cache/*
 src/netspeed.egg-info/*
-__pycache__/*
-__pycache__/*
+
 .coverage
 .coverage.*
 .coverage.xml
@@ -12,5 +11,5 @@ __pycache__/*
 .coverage.json.bz2
 .coverage.json.xz
 .coverage.json.lzma
-./__pycache__/*
+__pycache__/
 *.pyc
