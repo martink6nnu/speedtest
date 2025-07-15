@@ -9,3 +9,11 @@ dependencies = [
     "pydantic>=2.11.7",
     "ruff>=0.12.3",
 ]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-mock>=3.11.0",
+    "httpx>=0.24.0",  # Required for FastAPI TestClient
+]
+

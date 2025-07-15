@@ -1,0 +1,16 @@
+.venv/*
+.ruff_cache/*
+.pytest_cache/*
+src/netspeed.egg-info/*
+__pycache__/*
+__pycache__/*
+.coverage
+.coverage.*
+.coverage.xml
+.coverage.json
+.coverage.json.gz
+.coverage.json.bz2
+.coverage.json.xz
+.coverage.json.lzma
+./__pycache__/*
+*.pyc
