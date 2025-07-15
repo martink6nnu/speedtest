@@ -30,7 +30,7 @@ def mock_speedtest_output():
             "id": "28935",
             "host": "speedtest-rix.retn.net:8080",
             "d": 279.1799954388942,
-            "latency": 18.482
+            "latency": 18.482,
         },
         "timestamp": "2025-07-15T17:49:51.959712Z",
         "bytes_sent": 98418688,
@@ -46,8 +46,8 @@ def mock_speedtest_output():
             "ispdlavg": "0",
             "ispulavg": "0",
             "loggedin": "0",
-            "country": "EE"
-        }
+            "country": "EE",
+        },
     }
 
 
@@ -58,10 +58,7 @@ def mock_expected_format():
         "download": {"bandwidth": 99478925.14088322},
         "upload": {"bandwidth": 78648744.10145727},
         "ping": 18.482,
-        "server": {
-            "name": "Riga",
-            "location": "Latvia"
-        }
+        "server": {"name": "Riga", "location": "Latvia"},
     }
 
 
@@ -74,4 +71,4 @@ def mock_request_repository():
 @pytest.fixture
 def speed_service(mock_request_repository):
     """SpeedService with mocked repository"""
-    return SpeedService(mock_request_repository) 
+    return SpeedService(mock_request_repository)

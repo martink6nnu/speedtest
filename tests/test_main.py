@@ -9,8 +9,8 @@ class TestMainApp:
     def test_app_initialization(self):
         """Test that the app initializes correctly"""
         assert app is not None
-        assert hasattr(app, 'routes')
-        
+        assert hasattr(app, "routes")
+
         # Check that routes are registered
         route_paths = [route.path for route in app.routes]
         assert "/" in route_paths
@@ -24,7 +24,7 @@ class TestMainApp:
         """Test that the expected number of routes are registered"""
         # FastAPI adds some default routes, so we check for our specific ones
         route_paths = [route.path for route in app.routes]
-        
+
         # Should have at least our two main routes
         assert "/" in route_paths
         assert "/speed" in route_paths
@@ -33,7 +33,7 @@ class TestMainApp:
         """Test that OpenAPI schema is available"""
         response = test_client.get("/openapi.json")
         assert response.status_code == status.HTTP_200_OK
-        
+
         schema = response.json()
         assert "openapi" in schema
         assert "paths" in schema
@@ -74,4 +74,4 @@ class TestMainApp:
         """Test that responses have expected headers"""
         response = test_client.get("/")
         assert "content-type" in response.headers
-        assert "application/json" in response.headers["content-type"] 
+        assert "application/json" in response.headers["content-type"]

@@ -9,7 +9,7 @@ class TestDependencies:
     def test_get_request_repository(self):
         """Test that get_request_repository returns a RequestRepository instance"""
         repo = get_request_repository()
-        
+
         assert isinstance(repo, RequestRepository)
         assert repo.timeout == 120  # Default timeout
 
@@ -17,7 +17,7 @@ class TestDependencies:
         """Test that multiple calls return new instances"""
         repo1 = get_request_repository()
         repo2 = get_request_repository()
-        
+
         assert isinstance(repo1, RequestRepository)
         assert isinstance(repo2, RequestRepository)
         # Should be different instances (not singleton)
@@ -26,7 +26,7 @@ class TestDependencies:
     def test_get_speed_service(self, mock_request_repository):
         """Test that get_speed_service returns a SpeedService instance"""
         service = get_speed_service(mock_request_repository)
-        
+
         assert isinstance(service, SpeedService)
         assert service.request_repository == mock_request_repository
 
@@ -34,7 +34,7 @@ class TestDependencies:
         """Test get_speed_service with real RequestRepository"""
         repo = get_request_repository()
         service = get_speed_service(repo)
-        
+
         assert isinstance(service, SpeedService)
         assert isinstance(service.request_repository, RequestRepository)
 
@@ -43,7 +43,7 @@ class TestDependencies:
         # This simulates how FastAPI would resolve dependencies
         repo = get_request_repository()
         service = get_speed_service(repo)
-        
+
         assert isinstance(repo, RequestRepository)
         assert isinstance(service, SpeedService)
         assert service.request_repository is repo
@@ -52,10 +52,10 @@ class TestDependencies:
         """Test that multiple speed service instances can be created"""
         repo1 = get_request_repository()
         repo2 = get_request_repository()
-        
+
         service1 = get_speed_service(repo1)
         service2 = get_speed_service(repo2)
-        
+
         assert service1 is not service2
         assert service1.request_repository is not service2.request_repository
 
@@ -63,8 +63,8 @@ class TestDependencies:
         """Test that SpeedService correctly uses injected repository"""
         repo = get_request_repository()
         service = get_speed_service(repo)
-        
+
         # Verify the service has the expected interface
-        assert hasattr(service, 'get_speedtest_results')
-        assert hasattr(service, 'request_repository')
-        assert callable(service.get_speedtest_results) 
+        assert hasattr(service, "get_speedtest_results")
+        assert hasattr(service, "request_repository")
+        assert callable(service.get_speedtest_results)
