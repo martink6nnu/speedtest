@@ -30,5 +30,4 @@ jobs:
         run: uv run ruff format --check .
       - name: Run tests
         run: uv run pytest
-      - name: Deploy
-        run: curl -X POST -d '' https://kiisu.site:9000/hooks/deploy?secret=MY_SECRET
+     
