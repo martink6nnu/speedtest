@@ -25,7 +25,7 @@ class TestSpeedService:
         assert isinstance(result, SpeedResponse)
         # Convert from bits to megabits (divide by 1,000,000) and round to 2 decimals
         expected_download = round(99478925.14088322 / 1_000_000, 2)  # 99.48
-        expected_upload = round(78648744.10145727 / 1_000_000, 2)    # 78.65
+        expected_upload = round(78648744.10145727 / 1_000_000, 2)  # 78.65
         assert result.download_speed == expected_download
         assert result.upload_speed == expected_upload
         assert result.ping == 18.482

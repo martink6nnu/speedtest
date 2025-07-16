@@ -22,7 +22,9 @@ class TestRequestRepository:
     @pytest.mark.anyio
     @patch("src.repositories.requester.asyncio.create_subprocess_exec")
     @patch("src.repositories.requester.asyncio.wait_for")
-    async def test_successful_speedtest_execution(self, mock_wait_for, mock_create_subprocess, mock_speedtest_output):
+    async def test_successful_speedtest_execution(
+        self, mock_wait_for, mock_create_subprocess, mock_speedtest_output
+    ):
         """Test successful speedtest execution"""
         # Mock successful subprocess result
         mock_process = Mock()
@@ -45,7 +47,9 @@ class TestRequestRepository:
     @pytest.mark.anyio
     @patch("src.repositories.requester.asyncio.create_subprocess_exec")
     @patch("src.repositories.requester.asyncio.wait_for")
-    async def test_speedtest_timeout_exception(self, mock_wait_for, mock_create_subprocess):
+    async def test_speedtest_timeout_exception(
+        self, mock_wait_for, mock_create_subprocess
+    ):
         """Test speedtest timeout handling"""
         mock_process = Mock()
         mock_create_subprocess.return_value = mock_process
@@ -73,7 +77,9 @@ class TestRequestRepository:
     @pytest.mark.anyio
     @patch("src.repositories.requester.asyncio.create_subprocess_exec")
     @patch("src.repositories.requester.asyncio.wait_for")
-    async def test_speedtest_json_parse_error(self, mock_wait_for, mock_create_subprocess):
+    async def test_speedtest_json_parse_error(
+        self, mock_wait_for, mock_create_subprocess
+    ):
         """Test handling of invalid JSON response"""
         mock_process = Mock()
         mock_create_subprocess.return_value = mock_process
@@ -89,7 +95,9 @@ class TestRequestRepository:
     @pytest.mark.anyio
     @patch("src.repositories.requester.asyncio.create_subprocess_exec")
     @patch("src.repositories.requester.asyncio.wait_for")
-    async def test_speedtest_generic_exception(self, mock_wait_for, mock_create_subprocess):
+    async def test_speedtest_generic_exception(
+        self, mock_wait_for, mock_create_subprocess
+    ):
         """Test handling of generic exceptions"""
         mock_process = Mock()
         mock_create_subprocess.return_value = mock_process
@@ -103,7 +111,9 @@ class TestRequestRepository:
     @pytest.mark.anyio
     @patch("src.repositories.requester.asyncio.create_subprocess_exec")
     @patch("src.repositories.requester.asyncio.wait_for")
-    async def test_custom_timeout_used(self, mock_wait_for, mock_create_subprocess, mock_speedtest_output):
+    async def test_custom_timeout_used(
+        self, mock_wait_for, mock_create_subprocess, mock_speedtest_output
+    ):
         """Test that custom timeout is passed to wait_for"""
         mock_process = Mock()
         mock_stdout = json.dumps(mock_speedtest_output).encode()
@@ -117,4 +127,4 @@ class TestRequestRepository:
         # Check that wait_for was called with the custom timeout
         mock_wait_for.assert_called_once()
         call_args = mock_wait_for.call_args
-        assert call_args[1]['timeout'] == 30
+        assert call_args[1]["timeout"] == 30
