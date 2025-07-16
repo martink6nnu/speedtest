@@ -8,11 +8,11 @@ class SpeedService:
 
     async def get_speedtest_results(self) -> SpeedResponse:
         results = await self.request_repository.get_speedtest_results()
-        
+
         # Convert from bits per second to megabits per second (Mbps)
         download_mbps = round(results["download"] / 1_000_000, 2)
         upload_mbps = round(results["upload"] / 1_000_000, 2)
-        
+
         return SpeedResponse(
             download_speed=download_mbps,
             upload_speed=upload_mbps,
