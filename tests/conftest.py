@@ -1,6 +1,8 @@
-import pytest
 from unittest.mock import Mock
+
+import pytest
 from fastapi.testclient import TestClient
+
 from src.main import app
 from src.repositories.requester import RequestRepository
 from src.services.get_speed import SpeedService

@@ -1,8 +1,10 @@
-import pytest
-import json
-from unittest.mock import patch, Mock
-import subprocess
 import asyncio
+import json
+import subprocess
+from unittest.mock import Mock, patch
+
+import pytest
+
 from src.repositories.requester import RequestRepository
 
 
@@ -53,7 +55,7 @@ class TestRequestRepository:
         """Test speedtest timeout handling"""
         mock_process = Mock()
         mock_create_subprocess.return_value = mock_process
-        mock_wait_for.side_effect = asyncio.TimeoutError()
+        mock_wait_for.side_effect = TimeoutError()
 
         repo = RequestRepository()
 

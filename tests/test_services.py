@@ -1,6 +1,7 @@
 import pytest
-from src.services.get_speed import SpeedService
+
 from src.models.speedresponse import SpeedResponse
+from src.services.get_speed import SpeedService
 
 
 class TestSpeedService:

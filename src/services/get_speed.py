@@ -1,5 +1,5 @@
-from src.repositories.requester import RequestRepository
 from src.models.speedresponse import SpeedResponse
+from src.repositories.requester import RequestRepository
 
 
 class SpeedService:

@@ -1,7 +1,7 @@
-from unittest.mock import patch, Mock
-from fastapi import status
 import json
-import asyncio
+from unittest.mock import Mock, patch
+
+from fastapi import status
 
 
 class TestRootRouter:
@@ -69,7 +69,7 @@ class TestSpeedRouter:
         # Test timeout
         mock_process = Mock()
         mock_create_subprocess.return_value = mock_process
-        mock_wait_for.side_effect = asyncio.TimeoutError()
+        mock_wait_for.side_effect = TimeoutError()
         response = test_client.get("/speed")
         assert response.status_code == status.HTTP_500_INTERNAL_SERVER_ERROR
         assert "Speedtest timed out" in response.json()["detail"]
