@@ -65,7 +65,6 @@ class TestSpeedRouter:
         self, mock_wait_for, mock_create_subprocess, test_client
     ):
         """Test speed endpoint error scenarios (timeout, generic errors, JSON parse)"""
-        import subprocess
 
         # Test timeout
         mock_process = Mock()
