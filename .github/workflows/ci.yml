@@ -8,7 +8,7 @@ on:
     branches:
       - main
 
-concurrency:                  # optional: cancel older runs
+concurrency:                  
   group: ci-${{ github.ref }}
   cancel-in-progress: true    # :contentReference[oaicite:0]{index=0}
 
@@ -16,8 +16,8 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4          # get code
-      - uses: actions/setup-python@v5      # pick a Python
+      - uses: actions/checkout@v4          
+      - uses: actions/setup-python@v5      
         with:
           python-version: '3.12'
       - name: Install dependencies
@@ -30,3 +30,5 @@ jobs:
         run: uv run ruff format --check .
       - name: Run tests
         run: uv run pytest
+      - name: Deploy
+        run: curl -X POST -d '' https://kiisu.site:9000/hooks/deploy?secret=MY_SECRET
