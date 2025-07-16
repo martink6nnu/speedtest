@@ -52,17 +52,6 @@ def mock_speedtest_output():
 
 
 @pytest.fixture
-def mock_expected_format():
-    """Mock data in the format the current code expects"""
-    return {
-        "download": {"bandwidth": 99478925.14088322},
-        "upload": {"bandwidth": 78648744.10145727},
-        "ping": 18.482,
-        "server": {"name": "Riga", "location": "Latvia"},
-    }
-
-
-@pytest.fixture
 def mock_request_repository():
     """Mock RequestRepository"""
     return Mock(spec=RequestRepository)

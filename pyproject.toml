@@ -15,5 +15,7 @@ dev = [
     "pytest>=7.4.0",
     "pytest-mock>=3.11.0",
     "httpx>=0.24.0",  # Required for FastAPI TestClient
+    "trio>=0.30.0",
 ]
+
 
